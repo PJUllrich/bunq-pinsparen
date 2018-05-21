@@ -1,0 +1,11 @@
+aenum==2.0.8
+bunq-sdk==0.13.0
+certifi==2018.1.18
+chardet==3.0.4
+idna==2.5
+pycryptodomex==3.4.6
+requests==2.18.1
+simplejson==3.11.1
+six==1.11.0
+urllib3==1.21.1
+virtualenv==15.1.0
