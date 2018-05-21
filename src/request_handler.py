@@ -1,6 +1,8 @@
 import logging
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
+from src.api import API
+
 logger = logging.getLogger(__name__)
 
 
@@ -11,12 +13,14 @@ class RequestHandler(BaseHTTPRequestHandler):
         content_length = int(self.headers['content-length'])
         post_body = self.rfile.read(content_length)
 
+        logger.info('Received new MUTATION notification')
+
         if len(post_body) > 0:
-            print(post_body)
+            API.handle_mutation_event(post_body)
 
 
 def start_listening(port):
-    print(f'Listening on localhost:{port}')
+    logger.info(f'Listening on localhost:{port}')
     server = HTTPServer(('', port), RequestHandler)
 
     try:
